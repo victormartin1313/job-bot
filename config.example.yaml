@@ -1,0 +1,26 @@
+profile:
+  name: "Your Name"
+  university: "Your University"
+
+preferences:
+  roles:
+    - "IT Audit"
+    - "Technology Risk"
+    - "GRC"
+  locations:
+    - "Phoenix, AZ"
+  remote: false
+  min_score: 60
+
+email:
+  smtp_host: "smtp.mail.me.com"   # iCloud — change if using Gmail/Outlook
+  smtp_port: 587
+  smtp_user: "you@example.com"
+  smtp_password: ""
+
+platforms:
+  linkedin_profile_path: ""
+  linkedin_email: "you@example.com"
+  linkedin_password: ""
+  handshake_email: ""
+  handshake_password: ""
