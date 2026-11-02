@@ -17,6 +17,7 @@ email:
   smtp_port: 587
   smtp_user: "you@example.com"
   smtp_password: ""
+  to_address: ""                  # Optional; defaults to smtp_user
 
 platforms:
   linkedin_profile_path: ""

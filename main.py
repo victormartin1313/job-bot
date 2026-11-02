@@ -76,7 +76,7 @@ def cmd_setup() -> None:
     console.print("[dim]iCloud: generate an app-specific password at appleid.apple.com → Security.[/dim]")
     ask("SMTP host", email_cfg, "smtp_host", "smtp.mail.me.com")
     ask("SMTP port", email_cfg, "smtp_port", "587")
-    ask("SMTP username (your email)", email_cfg, "smtp_user", "vamartin@me.com")
+    ask("SMTP username (your email)", email_cfg, "smtp_user", "you@example.com")
     smtp_pw = Prompt.ask("SMTP password / app-specific password", password=True,
                          default=email_cfg.get("smtp_password", ""))
     if smtp_pw:
@@ -136,7 +136,8 @@ def cmd_discover() -> None:
     new_jobs = list(all_jobs) + [j for j in firm_jobs if j["url"] not in seen_urls]
     if new_jobs:
         smtp_cfg = config.get("email", {})
-        console.print(f"[cyan]Emailing {len(new_jobs)} matches to vamartin@me.com…[/cyan]")
+        to_address = smtp_cfg.get("to_address") or smtp_cfg.get("smtp_user")
+        console.print(f"[cyan]Emailing {len(new_jobs)} matches to {to_address}…[/cyan]")
         from emailer import send_digest
         ok = send_digest(new_jobs, smtp_cfg)
         if ok:

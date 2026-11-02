@@ -1,4 +1,4 @@
-"""Email digest of high-scoring new jobs to Victor."""
+"""Email digest of high-scoring new jobs."""
 
 from __future__ import annotations
 
@@ -8,8 +8,6 @@ from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from typing import Optional
-
-TO_ADDRESS = "vamartin@me.com"
 
 
 def _score_color(score: float) -> str:
@@ -137,7 +135,7 @@ def send_digest(jobs: list[sqlite3.Row], smtp_cfg: dict) -> bool:
     msg = MIMEMultipart("alternative")
     msg["Subject"] = f"Job Matches ({len(jobs)} new) — {datetime.now().strftime('%b %d')}"
     msg["From"] = smtp_user
-    msg["To"] = TO_ADDRESS
+    msg["To"] = smtp_cfg.get("to_address") or smtp_user
 
     # Plain-text fallback
     plain = f"New job matches — {datetime.now().strftime('%B %d, %Y')}\n\n"

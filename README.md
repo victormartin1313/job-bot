@@ -43,4 +43,5 @@ Copy `config.example.yaml` to `config.yaml` and fill in your details. The file i
 | `preferences.locations` | Target cities |
 | `preferences.min_score` | Minimum score to include in digest (0–100) |
 | `email.smtp_*` | SMTP credentials for sending the digest |
+| `email.to_address` | Digest recipient (defaults to `email.smtp_user`) |
 | `platforms.linkedin_*` | LinkedIn credentials for scraping |
